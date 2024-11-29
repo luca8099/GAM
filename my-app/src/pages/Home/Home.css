@@ -1,0 +1,244 @@
+/* Sfondo e layout generale */
+.home-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e1e2f, #34345a, #1e1e2f, #34345a);
+  background-size: 400% 400%;
+  color: #f0f0f5;
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: gradientAnimation 15s ease infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 50% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  75% {
+    background-position: 50% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Particelle animate */
+.home-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: moveParticles 30s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes moveParticles {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(50px, 50px);
+  }
+}
+
+/* Header */
+.home-header {
+  text-align: center;
+  margin-bottom: 50px;
+  animation: fadeInDown 1s forwards;
+}
+
+.home-header h1 {
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.home-header p {
+  font-size: 1.2rem;
+  color: #d3d3e8;
+  margin-bottom: 20px;
+}
+
+.home-header button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  background-color: #ff4081;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.home-header button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: all 650ms;
+}
+
+.home-header button:hover::after {
+  left: 100%;
+}
+
+.home-header button:hover {
+  background-color: #e91e63;
+  transform: scale(1.05);
+}
+
+/* Animazione di fade-in */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Sezione contenuto */
+.home-content {
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+  animation: fadeInUp 1s forwards;
+}
+
+.home-content h2 {
+  font-size: 2rem;
+  color: #e0e0ff;
+  margin-bottom: 30px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Features */
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* Cards */
+.feature-card {
+  background: rgba(42, 42, 63, 0.8);
+  border: 1px solid rgba(58, 58, 95, 0.5);
+  border-radius: 16px;
+  padding: 25px;
+  width: 280px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+.feature-card:hover::before {
+  width: 200%;
+  height: 200%;
+}
+
+.feature-card h3 {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.feature-card p {
+  font-size: 1rem;
+  color: #b0b0d0;
+  position: relative;
+  z-index: 1;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* Effetto Blur */
+.home-container.blur {
+  filter: blur(5px);
+}
+
+/* Overlay del login */
+.login-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 15, 31, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Popup di login */
+.login-popup {
+  background: #2a2a3f;
+  padding: 30px;
+  border-radius: 8px;
+  animation: popupShow 0.5s forwards;
+}
+
+@keyframes popupShow {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

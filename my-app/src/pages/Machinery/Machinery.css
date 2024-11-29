@@ -1,0 +1,356 @@
+/* Layout generale */
+.machinery {
+  display: flex;
+  min-height: 100vh;
+  background-color: #1e1e2f;
+  color: #f0f0f5;
+}
+
+/* Contenuto principale */
+.machinery-content {
+  margin-left: 250px; /* Regola questo valore se la tua sidebar ha una larghezza diversa */
+  padding: 40px;
+  flex: 1;
+  background: linear-gradient(135deg, #1e1e2f, #34345a);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+}
+
+/* Animazione del gradiente di sfondo */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Titolo della pagina */
+.machinery-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #ffffff;
+  text-align: center;
+  animation: fadeInDown 1s forwards;
+}
+
+/* Animazione di fade-in dall'alto */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Messaggi di errore e successo */
+.error {
+  color: #ff5c5c;
+  text-align: center;
+  margin-bottom: 20px;
+  animation: fadeIn 0.5s forwards;
+}
+
+.success {
+  color: #4caf50;
+  text-align: center;
+  margin-bottom: 20px;
+  animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Lista dei macchinari */
+.machinery-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  animation: fadeInUp 1s forwards;
+}
+
+/* Animazione di fade-in dal basso */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Card dei macchinari */
+.machine-card {
+  position: relative;
+  background: rgba(42, 42, 63, 0.8);
+  border: 1px solid rgba(58, 58, 95, 0.5);
+  border-radius: 16px;
+  padding: 30px;
+  width: 280px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.machine-card::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+.machine-card:hover::before {
+  width: 200%;
+  height: 200%;
+}
+
+.machine-card h2 {
+  margin-bottom: 15px;
+  color: #ffffff;
+  font-size: 1.8rem;
+  position: relative;
+  z-index: 1;
+}
+
+.machine-card p {
+  margin: 10px 0;
+  color: #b0b0d0;
+  font-size: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Pulsanti azioni card */
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.card-actions button {
+  background: none;
+  border: none;
+  color: #ff4081;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.card-actions button:hover {
+  color: #e91e63;
+  transform: scale(1.2);
+}
+
+.machine-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* Card aggiungi macchinario */
+.add-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(42, 42, 63, 0.6);
+  border: 2px dashed rgba(58, 58, 95, 0.5);
+  border-radius: 16px;
+  width: 280px;
+  height: 200px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.add-card span {
+  font-size: 5rem;
+  color: rgba(255, 255, 255, 0.1);
+}
+
+.add-card:hover {
+  background: rgba(42, 42, 63, 0.8);
+  transform: scale(1.05);
+}
+
+/* Overlay popup */
+.form-overlay {
+  margin-top: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 15, 31, 0.9);
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  z-index: 1000;
+}
+
+/* Popup form */
+.form-popup {
+  background: rgba(42, 42, 63, 0.9);
+  padding: 30px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5);
+  animation: popupShow 0.5s forwards;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes popupShow {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.form-popup h2 {
+  margin-bottom: 30px;
+  color: #ffffff;
+  font-size: 2rem;
+  position: relative;
+  z-index: 1;
+  animation: fadeInDown 0.5s forwards;
+}
+
+/* Etichette flottanti */
+.form-popup label {
+  position: relative;
+  display: block;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.form-popup input,
+.form-popup select {
+  width: 100%;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 30px;
+  background: rgba(30, 30, 47, 0.9);
+  color: #fff;
+  transition: background-color 0.3s;
+}
+
+.form-popup input::placeholder {
+  color: transparent;
+}
+
+.form-popup input:focus,
+.form-popup select:focus {
+  background-color: rgba(30, 30, 47, 1);
+  outline: none;
+}
+
+.form-popup label span {
+  position: absolute;
+  top: 12px;
+  left: 20px;
+  color: #f0f0f5;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.form-popup input:focus + span,
+.form-popup input:not(:placeholder-shown) + span,
+.form-popup select:focus + span,
+.form-popup select:not([value=""]) + span {
+  top: -10px;
+  left: 15px;
+  font-size: 0.8rem;
+  color: #ff4081;
+}
+
+/* Pulsanti del form */
+.form-popup button {
+  margin: 10px 5px;
+  padding: 12px 20px;
+  background: #ff4081;
+  color: #ffffff;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.form-popup button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: all 650ms;
+}
+
+.form-popup button:hover::after {
+  left: 100%;
+}
+
+.form-popup button:hover {
+  background-color: #e91e63;
+  transform: scale(1.05);
+}
+
+.form-popup button[type="button"] {
+  background: #ff5c5c;
+}
+
+.form-popup button[type="button"]:hover {
+  background: #cc4949;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .machinery-content {
+    margin-left: 0;
+  }
+
+  .machine-card,
+  .add-card {
+    width: 100%;
+  }
+}
+
+

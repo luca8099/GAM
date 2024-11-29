@@ -1,0 +1,27 @@
+/* Mobile */
+@media (max-width: 768px) {
+    .dashboard-header {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .dashboard-content {
+      padding: 15px;
+    }
+  
+    .card {
+      margin-bottom: 15px;
+    }
+  }
+  
+  /* Tablet */
+  @media (max-width: 1024px) {
+    .dashboard-header h1 {
+      font-size: 1.5em;
+    }
+  
+    .card h2 {
+      font-size: 1.1em;
+    }
+  }
+  

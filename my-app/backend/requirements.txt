@@ -1,0 +1,7 @@
+fastapi             
+uvicorn             
+pymongo              
+bson                
+python-jose          
+passlib[bcrypt]
+pydantic[email]
